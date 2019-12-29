@@ -13,4 +13,4 @@ const app = new App([
   new UserReportController()
 ])
 
-app.listen(5000)
+app.connectToDB().listen(5000)

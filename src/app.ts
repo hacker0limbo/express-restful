@@ -12,12 +12,15 @@ export default class App {
 
   constructor(controllers: Controller[]) {
     this.app = express()
-    this.connectToDB()
 
     this.initializeMiddlewares()
     this.initializeControllers(controllers)
     // error handlers 中间件放在路由后面, 这样可以在路由中使用 next(err) 来 trigger
     this.initializeErrorHandlers()
+  }
+
+  public getServer() {
+    return this.app
   }
 
   private initializeMiddlewares() {
@@ -35,27 +38,28 @@ export default class App {
     this.app.use(errorMiddleware)
   }
 
-  private connectToDB() {
-    const { MONGO_PATH } = process.env
+  public connectToDB(uri=process.env.MONGO_PATH) {
     const options = {
       useNewUrlParser: true,
       useFindAndModify: false,
       useCreateIndex: true,
       useUnifiedTopology: true,
     }
-    mongoose.connect(MONGO_PATH, options)
     
     const db = mongoose.connection
+    mongoose.connect(uri, options)
     db.on('error', () => {
       console.log('Error when connecting to db')
     })
     db.once('open', () => {
       console.log('Successfully connecting to db')
     })
+
+    return this.app
   }
 
   public listen(port=Number(process.env.PORT)) {
-    this.app.listen(port, () => {
+    return this.app.listen(port, () => {
       console.log(`server starts at ${port}`)
     })
   }

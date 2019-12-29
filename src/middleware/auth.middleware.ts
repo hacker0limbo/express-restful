@@ -16,6 +16,7 @@ import UserModel from '../models/user.model'
  * @param next next 函数
  */
 const authMiddleware = async (req: Request | UserRequest, res: Response, next: NextFunction) => {
+  
   if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
     // 得到客户端发送的 token
     const token = req.headers.authorization.split(' ')[1]
