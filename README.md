@@ -10,23 +10,22 @@
 ## 项目结构
 ```bash
 ├── src/                                  # 源代码目录
-  ├── app.ts                              # 应用入口
-  ├── authentication                      # auth service
-  ├── controllers                         # 控制器
-  ├── dto                                 # 客户端发送的数据接口
-  ├── exceptions                          # 异常
-  ├── interfaces                          # 接口
-  ├── middleware                          # 自定义中间件
-  ├── models                              # orm 模型
-  ├── operations                          # 数据操作 service
-  ├── server.ts                           # 入口文件
-  └── utils                               # 工具
+│  ├── app.ts                             # 应用入口
+│  ├── authentication                     # auth service
+│  ├── controllers                        # 控制器
+│  ├── dto                                # 客户端发送的数据接口
+│  ├── exceptions                         # 异常
+│  ├── interfaces                         # 接口
+│  ├── middleware                         # 自定义中间件
+│  ├── models                             # orm 模型
+│  ├── operations                         # 数据操作 service
+│  ├── server.ts                          # 入口文件
+│  └── utils                              # 工具
 ├── tests/                                # 测试目录
-  ├── authentication.controller.test.ts   
-  ├── authentication.service.test.ts
-  ├── dbHandler.ts
-  └── post.controller.test.ts
-├── jest.config.js
+│  ├── authentication.controller.test.ts
+│  ├── authentication.service.test.ts
+│  ├── dbHandler.ts
+│  └── post.controller.test.ts
 ├── package.json
 └── tsconfig.json
 ```
